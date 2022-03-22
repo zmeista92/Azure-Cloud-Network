@@ -119,7 +119,7 @@ SSH into the control node and follow the steps below:
   - run `ansible-playbook filebeat-playbook.yml`
   - run `ansible-playbook metricbeat-playbook.yml`
 - Which URL do you navigate to in order to check that the ELK server is running?
-  -http://[your.VM.IP]:5601/app/kibana
+  - http://[your.VM.IP]:5601/app/kibana
 
 ### The Commands Needed to Run the Ansible Configuration for the Elk-Server:
 (Some commands below are redundant to the section above)
