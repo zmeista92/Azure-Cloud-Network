@@ -116,8 +116,8 @@ SSH into the control node and follow the steps below:
   - Copying the file:
     - curl https://github.com/zmeista92/ElkStack-Project/blob/main/Ansible/filebeat-playbook.yml > `/etc/ansible/filebeat-playbook.yml`
     - curl https://github.com/zmeista92/ElkStack-Project/blob/main/Ansible/metricbeat-playbook.yml > `/etc/ansible/metricbeat-playbook.yml`
-  - run `filebeat-playbook.yml`
-  - run `metricbeat-playbook.yml`
+  - run `ansible-playbook filebeat-playbook.yml`
+  - run `ansible-playbook metricbeat-playbook.yml`
 - Which URL do you navigate to in order to check that the ELK server is running?
   -http://[your.VM.IP]:5601/app/kibana
 
