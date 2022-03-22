@@ -80,7 +80,7 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![image](Ansible/docker_ps_output.png)
+![image](Diagrams/Screenshot 2022-03-22 142231.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -93,19 +93,45 @@ We have installed the following Beats on these machines:
 - Metricbeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Filebeats: allows us to collect system file data, neabling analysts to monitor for suspicious activity.
+- Metricbeats: allows us to collect specific metrics about the machines in the network such as CPU usage and uptime.
 
-### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+### Using the Playbook(s)
+In order to use the playbook(s), you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Which file do you update to make Ansible run the playbook on a specific machine?
+  - Update the Ansible [hosts](Ansible/hosts) file within the Ansible container `/etc/ansible/hosts` on your Jump-Box VM.
+- How do I specify which machine to install the ELK server on versus which to install Filebeat on?
+  - Within the 'hosts' header of [install-elk.yml](Ansible/install-elk.yml)
+- Download the [install-elk.yml](Ansible/install-elk.yml) (Copy and Paste OR curl file) within `/etc/ansible`
+  - curl https://github.com/zmeista92/ElkStack-Project/blob/main/Ansible/install-elk.yml
+  - run `ansible-playbook install-elk.yml`
+  - After running the playbook, navigate to the ELK VM to check that the installation worked as expected.
+    - run `docker ps`
+- Copy the [filebeat-config.yml](Ansible/filebeat-config.yml) and [metricbeat-config.yml](Ansible/metricbeat-config.yml) file to `/etc/ansible` within the Ansible container in your Jump-Box VM.
+  - Update the configuration files to include the private IP of the ELK server to the Elasticsearch & Kibana tabs.
+- Which file is the playbook? Where do you copy it?
+  -[filebeat-playbook.yml](Ansible/filebeat-playbook.yml) & [metricbeat-playbook.yml](Ansible/metricbeat-playbook.yml)
+  -Copying the file:
+    -curl https://github.com/zmeista92/ElkStack-Project/blob/main/Ansible/filebeat-playbook.yml > `/etc/ansible/filebeat-playbook.yml`
+    -curl https://github.com/zmeista92/ElkStack-Project/blob/main/Ansible/metricbeat-playbook.yml > `/etc/ansible/metricbeat-playbook.yml`
+  - run `filebeat-playbook.yml`
+  - run `metricbeat-playbook.yml`
+- Which URL do you navigate to in order to check that the ELK server is running?
+  -http://[your.VM.IP]:5601/app/kibana
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
-
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+### The Commands Needed to Run the Ansible Configuration for the Elk-Server:
+(Some commands below are redundant to the section above)
+- SSH into jumpBox Vm `ssh RedAdmin@[Public IP address]`
+- Run `sudo docker container list -a`
+- Run `sudo docker start container [Container name]`
+- Run `sudo docker attach container [Container name]`
+- Update the hosts file in /etc/ansible/[hosts](Ansible/hosts)
+- Create new Ansible playbook to use for your new Elk Vm curl [install-elk.yml](Ansible/install-elk.yml) > `/etc/ansible/install-elk.yml`
+  - Run ansible-playbook intall-elk.yml
+- After the Elk container is installed double check elk-docker container is running by SSH into Elk VM `ssh sysadmin@[private IP address]`
+  - Run `sudo docker ps`
+- Since the Elk server runs on port 5601 you need to create an incoming rule for the security group that allows TCP traffic over the port 5601 from your IP address.
+- Check that you can load the ELK stack server at http://[your.VM.IP]:5601/app/kibana.
+If everthing works correcty, you should see the home webpage of kibana.
