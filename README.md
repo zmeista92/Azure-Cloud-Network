@@ -112,10 +112,10 @@ SSH into the control node and follow the steps below:
 - Copy the [filebeat-config.yml](Ansible/filebeat-config.yml) and [metricbeat-config.yml](Ansible/metricbeat-config.yml) file to `/etc/ansible` within the Ansible container in your Jump-Box VM.
   - Update the configuration files to include the private IP of the ELK server to the Elasticsearch & Kibana tabs.
 - Which file is the playbook? Where do you copy it?
-  -[filebeat-playbook.yml](Ansible/filebeat-playbook.yml) & [metricbeat-playbook.yml](Ansible/metricbeat-playbook.yml)
-  -Copying the file:
-    -curl https://github.com/zmeista92/ElkStack-Project/blob/main/Ansible/filebeat-playbook.yml > `/etc/ansible/filebeat-playbook.yml`
-    -curl https://github.com/zmeista92/ElkStack-Project/blob/main/Ansible/metricbeat-playbook.yml > `/etc/ansible/metricbeat-playbook.yml`
+  - [filebeat-playbook.yml](Ansible/filebeat-playbook.yml) & [metricbeat-playbook.yml](Ansible/metricbeat-playbook.yml)
+  - Copying the file:
+    - curl https://github.com/zmeista92/ElkStack-Project/blob/main/Ansible/filebeat-playbook.yml > `/etc/ansible/filebeat-playbook.yml`
+    - curl https://github.com/zmeista92/ElkStack-Project/blob/main/Ansible/metricbeat-playbook.yml > `/etc/ansible/metricbeat-playbook.yml`
   - run `filebeat-playbook.yml`
   - run `metricbeat-playbook.yml`
 - Which URL do you navigate to in order to check that the ELK server is running?
