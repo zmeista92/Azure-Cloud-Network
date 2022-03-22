@@ -27,7 +27,7 @@ Load balancing ensures that the application will be highly available, in additio
 - What is the advantage of a jump box?
   - The advantage of a Jump Box forces all of the traffic to a single node. This Jump Box requires SSH for added security. All administrative tasks are done within this VM to manage/configure other VM's and containers.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the logs and system traffic.
 - What does Filebeat watch for?
   - Filebeat monitors the specified log files or locations; collects log events, and send them to Elasticsearch.
 - What does Metricbeat record?
