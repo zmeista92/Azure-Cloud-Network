@@ -125,8 +125,8 @@ SSH into the control node and follow the steps below:
 (Some commands below are redundant to the section above)
 - SSH into jumpBox Vm `ssh RedAdmin@[Public IP address]`
 - Run `sudo docker container list -a`
-- Run `sudo docker start container [Container name]`
-- Run `sudo docker attach container [Container name]`
+- Run `sudo docker start container [Container name]` (Start the Ansible container)
+- Run `sudo docker attach container [Container name]` (Attach to the Ansible container)
 - Update the hosts file in /etc/ansible/[hosts](Ansible/hosts)
 - Create new Ansible playbook to use for your new Elk Vm (Using the [install-elk.yml](Ansible/install-elk.yml))
   - curl https://github.com/zmeista92/ElkStack-Project/blob/main/Ansible/install-elk.yml > `/etc/ansible/install-elk.yml`
