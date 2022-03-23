@@ -68,13 +68,13 @@ A summary of the access policies in place can be found in the table below.
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
 - It is used to scale automation on multiple machines using a Playbook and not having a risk of creating errors by manually configuring each virtual machine.
 
-The playbook implements the following tasks:
+The playbook (`install-elk.yml`) implements the following tasks:
 - The header of the Playbook can specify which group of machines it is applying to and the remote user.
-- The Playbook install the following services:
+- The Playbook installs the following services:
   - docker.io
   - python3-pip
   - docker
-- To launch and expose the container `run sebp/elk:761`
+- To launch and expose the container `sebp/elk:761`
   - The container should be started with the published ports:
     - 5601:5601 9200:9200 5044:5044
 
