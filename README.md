@@ -129,7 +129,7 @@ SSH into the control node and follow the steps below:
 - Run `sudo docker attach container [Container name]`
 - Update the hosts file in /etc/ansible/[hosts](Ansible/hosts)
 - Create new Ansible playbook to use for your new Elk Vm (Using the [install-elk.yml](Ansible/install-elk.yml))
-  - curl https://github.com/zmeista92/ElkStack-Project/blob/main/Ansible/install-elk.yml> `/etc/ansible/install-elk.yml`
+  - curl https://github.com/zmeista92/ElkStack-Project/blob/main/Ansible/install-elk.yml > `/etc/ansible/install-elk.yml`
   - Run `ansible-playbook intall-elk.yml`
 - After the Elk container is installed double check elk-docker container is running by SSH into Elk VM `ssh sysadmin@[private IP address]`
   - Run `sudo docker ps`
